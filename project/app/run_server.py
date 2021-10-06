@@ -39,7 +39,7 @@ load_model(modelpath)
 
 @app.route("/", methods=["GET"])
 def general():
-    return """Welcome to wine quality prediction process. Please use 'http://localhost/predict' to POST"""
+    return """Welcome to wine quality prediction process. Please use 'http://localhost:8180/predict' to POST"""
 
 
 @app.route("/predict", methods=["POST"])
@@ -51,30 +51,33 @@ def predict():
     # ensure an image was properly uploaded to our endpoint
     if flask.request.method == "POST":
 
-        features = ['fixed acidity', 'volatile acidity', 'citric acid', 'residual sugar',
-                    'chlorides', 'free sulfur dioxide', 'total sulfur dioxide', 'density',
-                    'pH', 'sulphates']
+        features = ['fixed_acidity', 'volatile_acidity', 'citric_acid', 'residual_sugar',
+                    'chlorides', 'free_sulfur_dioxide', 'total_sulfur_dioxide', 'density',
+                    'pH', 'sulphates', 'alcohol']
         req_dict = dict()
         request_json = flask.request.get_json()
+
         for feature in features:
             req_dict[feature] = request_json[feature]
 
         logger.info(f'{dt} Data:' + ','.join(f' {key} = {value}' for key, value in req_dict.items()))
-
+ 
         try:
-            preds = model.predict(pd.DataFrame(req_dict))
-
+            preds = model.predict(pd.DataFrame([req_dict]))
+            
         except AttributeError as e:
             logger.warning(f'{dt} Exception: {str(e)}')
             data['predictions'] = str(e)
             data['success'] = False
             return flask.jsonify(data)
 
-        data["predictions"] = preds
+
+        data["predictions"] = preds[0]
         # indicate that the request was a success
         data["success"] = True
 
     # return the data dictionary as a JSON response
+    logger.info(f'{dt} Preds = {preds[0]}')
     return flask.jsonify(data)
 
 
