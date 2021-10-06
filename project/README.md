@@ -43,4 +43,4 @@ $ docker build -t Data-driven/gbr_docker_flask .
 $ docker run -d -p 8180:8180 -p 8181:8181 -v <your_local_path_to_pretrained_models>:/app/app/models Data-driven/gbr_docker_flask
 ```
 
-### Переходим на localhost:8181
+### С помощью verify.ipynb проверяем работоспособность сервиса
