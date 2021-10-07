@@ -29,7 +29,7 @@ API: flask
 
 Модель: GradientBoostingRegressor
 
-### Клонируем репозиторий и создаем образ
+### Клонируем репозиторий в домашнюю папку пользователя и создаем образ
 ```
 $ git clone https://github.com/a1exkuchin/Data-driven.git
 $ cd GBR_docker_flask
@@ -38,9 +38,9 @@ $ sudo docker build -t flask_docker .
 
 ### Запускаем контейнер
 
-Здесь Вам нужно создать каталог локально и сохранить туда предобученную модель (<your_local_path_to_pretrained_models> нужно заменить на полный путь к этому каталогу)
+
 ```
-$ docker run -d -p 8180:8180 -p 8181:8181 -v <your_local_path_to_pretrained_models>:/app/app/models Data-driven/gbr_docker_flask
+$ sudo docker run -d -p 8180:8180 -v ~/app/app/models flask_docker
 ```
 
 ### С помощью verify.ipynb проверяем работоспособность сервиса
