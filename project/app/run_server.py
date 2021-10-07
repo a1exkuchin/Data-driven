@@ -33,7 +33,7 @@ def load_model(model_path):
     print(model)
 
 
-modelpath = "GBR_pipeline.dill"
+modelpath = "/app/app/models/GBR_pipeline.dill"
 load_model(modelpath)
 
 
