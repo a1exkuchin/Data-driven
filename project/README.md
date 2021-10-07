@@ -31,8 +31,10 @@ API: flask
 
 ### Клонируем репозиторий в домашнюю папку пользователя и создаем образ
 ```
+$ cd ~
+$ mkdir app
 $ git clone https://github.com/a1exkuchin/Data-driven.git
-$ cd GBR_docker_flask
+$ cd app
 $ sudo docker build -t flask_docker .
 ```
 
