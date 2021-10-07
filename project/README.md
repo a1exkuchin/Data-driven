@@ -33,7 +33,7 @@ API: flask
 ```
 $ git clone https://github.com/a1exkuchin/Data-driven.git
 $ cd GBR_docker_flask
-$ docker build -t Data-driven/gbr_docker_flask .
+$ sudo docker build -t flask_docker .
 ```
 
 ### Запускаем контейнер
