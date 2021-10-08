@@ -41,7 +41,7 @@ $ sudo docker build -t flask_docker .
 
 
 ```
-$ sudo docker run -d -p 8180:8180 -v ~/app/app/models flask_docker
+$ sudo docker run -d -p 8180:8180 -v ~/Data-driven/project/app/models flask_docker
 ```
 
 ### С помощью verify.ipynb проверяем работоспособность сервиса
